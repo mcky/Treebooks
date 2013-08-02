@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Treebooks</title>
+  <title>RedPanda</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+
+<div class="navbar navbar-fixed-top">
+	<a class="navbar-brand" href="#">RedPanda</a>
+		<ul class="nav navbar-nav">
+			<li><%= link_to "All Statuses", statuses_path %></li>
+		</ul>
+</div>
+
+
+<div class="container">
+	
+	<%= yield %>
+
+</div>
 
 </body>
 </html>
