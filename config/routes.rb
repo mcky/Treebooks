@@ -10,6 +10,7 @@ Treebooks::Application.routes.draw do
 	resources :statuses
 	
 	get 'news_feed', to: 'statuses#index', as: :news_feed
+	get 'update', to: 'statuses#new', as: :new_update
 	
 	root to: 'statuses#index'
 	
