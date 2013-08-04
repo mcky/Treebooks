@@ -2,22 +2,21 @@
 
 
 <% @statuses.each do |status| %>
-
-<div class="status media">
-	<a class="pull-left" href="#">
-		<img class="media-object" src="http://placehold.it/75">
-	</a>
-	<div class="media-body">
-		<strong class="media-heading"><%= status.user.full_name %></strong>
-		<p><%= status.content %></p>
-		<div class="meta">
-			<%= link_to time_ago_in_words(status.created_at) + " ago", status %>
-			<span class="admin">
-				- <%= link_to "Edit", edit_status_path(status) %> -
-				<%= link_to "Delete", status, method: :delete, data: { Confirm: "Are you sure?"} %>
-			</span>
+		<div class="status media">
+			<a class="pull-left" href="#">
+				<img class="media-object" src="http://placehold.it/75">
+			</a>
+			<div class="media-body">
+				<strong class="media-heading"><%= status.user.full_name %></strong>
+				<p><%= status.content %></p>
+				<div class="meta">
+					<%= link_to time_ago_in_words(status.created_at) + " ago", status %>
+					<span class="admin">
+						- <%= link_to "Edit", edit_status_path(status) %> -
+						<%= link_to "Delete", status, method: :delete, data: { Confirm: "Are you sure?"} %>
+					</span>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
 <% end %>
 
