@@ -1,12 +1,12 @@
-<%= simple_form_for(@status, html: {class: "form-horizontal"}) do |f| %>
+<%= simple_form_for(@status, defaults: {input_html: {class: "form-control"}}, html: {class: "form-horizontal"}) do |f| %>
   <% if @status.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@status.errors.count, "error") %> prohibited this status from being saved:</h2>
+    <div class="panel panel-danger" id="error_explanation">
+      <h2 class="panel-heading"><%= pluralize(@status.errors.count, "error") %> prohibited this status from being saved:</h2>
 
-      <ul>
-      <% @status.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+      <ul class="list-group">
+		  <% @status.errors.full_messages.each do |msg| %>
+			<li class="list-group-item"><%= msg %></li>
+		  <% end %>
       </ul>
     </div>
   <% end %>
@@ -14,6 +14,8 @@
  <%= f.input :user_id, collection: User.all, label_method: :full_name %>
  <%= f.input :content %>
   <div class="form-actions">
-    <%= f.button :submit %>
+<%= f.button :submit, "Post", :class => "btn-primary" %>
+<%= submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger" %>
+
   </div>
 <% end %>

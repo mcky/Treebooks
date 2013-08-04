@@ -2,13 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$lightgrey: #f9f9f9;
-.status {
-	border-bottom: solid 1px #ccc;
-	padding: 5px 0;
+$lightgrey: #ffffff;
+$background: #edeaed;
+$border: #d2d3d6;
+
+body {
+	background: $background;
+}
+
+.media.status {
 	
-	p {
-		margin: 4px 0;
+	background: $lightgrey;
+	border-radius: 3px;
+	border: 1px solid $border;
+	padding: 15px;
+	
+	.media-object {
+		max-height: 75px;
+		border-radius: 5px;
 	}
 	
 	.admin {
@@ -16,7 +27,7 @@ $lightgrey: #f9f9f9;
 	}
 	
 	&.hover {
-		background: $lightgrey;
+		
 	
 		&.hover .admin {
 			display: inline;
