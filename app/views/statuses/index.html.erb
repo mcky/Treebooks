@@ -1,6 +1,5 @@
 <h1>News Feed</h1><%= link_to "Post a New Status", new_update_path, class: "btn btn-primary" %>
 
-
 <% @statuses.each do |status| %>
 		<div class="status media">
 			
@@ -10,7 +9,6 @@
 			
 			<div class="media-body">
 				<strong class="media-heading"><%= status.user.full_name %></strong>
-				<strong class="media-heading"><%= status.user.profile_name %></strong>
 				<p><%= status.content %></p>
 				<div class="meta">
 					<%= link_to time_ago_in_words(status.created_at) + " ago", status %>

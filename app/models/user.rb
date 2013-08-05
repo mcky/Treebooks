@@ -29,6 +29,10 @@ has_many :statuses
 		"http://gravatar.com/avatar/#{hash}"	
 	end
 	
+	def testlink
+		"users/" + profile_name
+	end
+	
 	
 	
 	
