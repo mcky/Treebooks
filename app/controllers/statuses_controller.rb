@@ -43,7 +43,7 @@ before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
   # POST /statuses
   # POST /statuses.json
   def create
-    @status = Status.new(params[:status])
+    @status = current_user.statuses.new(params[:status])
 
     respond_to do |format|
       if @status.save
@@ -58,19 +58,21 @@ before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
 
   # PUT /statuses/1
   # PUT /statuses/1.json
-  def update
-    @status = Status.find(params[:id])
-
-    respond_to do |format|
-      if @status.update_attributes(params[:status])
-        format.html { redirect_to @status, notice: 'Status was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @status.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+def update
+	@status = current_user.statuses.find(params[:id])
+	if params[:status] && params[:status].has_key?(:user_id)
+		params[:status].delete(:user_id) 
+	end
+	respond_to do |format|
+		if @status.update_attributes(params[:status])
+			format.html { redirect_to @status, notice: 'Status was successfully updated.' }
+			format.json { head :no_content }
+		else
+			format.html { render action: "edit" }
+			format.json { render json: @status.errors, status: :unprocessable_entity }
+		end
+	end
+end
 
   # DELETE /statuses/1
   # DELETE /statuses/1.json
